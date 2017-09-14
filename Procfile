@@ -1,1 +1,1 @@
-worker: python infosphere.py
+web: python infosphere.py
