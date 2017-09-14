@@ -48,9 +48,6 @@ class Misc:
         while True:
             await asyncio.sleep(0.25)
             if response.done():
-                print('3')
-                print(response)
-                print(response.result())
                 response = response.result().json()
                 break
         if response.get('status') == 'success':

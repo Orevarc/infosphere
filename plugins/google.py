@@ -14,7 +14,7 @@ class Google:
     """
     def __init__(self, bot):
         self.bot = bot
-    
+
     async def google_search(self, query, animated=False, faces=False):
 
         def func():
