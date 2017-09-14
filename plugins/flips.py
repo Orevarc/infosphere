@@ -1,11 +1,7 @@
 # -*- coding: utf-8 -*-
 import asyncio
 
-from infosphere.decorators import command
-
 from discord.ext import commands as c
-
-outputs = []
 
 FLIP_TABLE = {}
 character_pairs = {
@@ -72,7 +68,7 @@ for a, b in character_pairs:
     FLIP_TABLE[b] = a
 
 
-class Fli:
+class Flips:
     def __init__(self, bot):
         self.bot = bot
 
@@ -86,6 +82,7 @@ class Fli:
 
     @c.command(name='flip')
     async def flip(self, *, string: str):
+        '''!flip <string> --> Flip any string '''
         msg = self.flip_message(string)
         if not msg:
             msg = u'┻━┻'
@@ -95,6 +92,7 @@ class Fli:
 
     @c.command(name='rageflip')
     async def rageflip(self, *, string: str):
+        '''!rageflip <string> --> Rageflip any string '''
         msg = self.flip_message(string)
         if not msg:
             msg = u'┻━┻'
@@ -104,6 +102,7 @@ class Fli:
 
     @c.command(name='unflip')
     async def unflip(self, *, string: str):
+        '''!unflip <string> --> Unflip any string '''
         msg = self. flip_message(string)
         if not msg:
             msg = u'┬─┬'
@@ -113,4 +112,4 @@ class Fli:
 
 
 def setup(bot):
-    bot.add_cog(Fli(bot))
+    bot.add_cog(Flips(bot))

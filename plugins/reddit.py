@@ -49,34 +49,42 @@ class Reddit:
 
     @c.command(name='aww')
     async def aww(self):
+        '''!aww --> Returns a random cute image '''
         await self.get_reddit('aww')
 
     @c.command(name='eww')
     async def eww(self):
+        '''!eww --> Returns a :bug:'''
         await self.get_reddit('whatsthisbug')
 
     @c.command(name='loop', aliases=['perfectloop'])
     async def loop(self):
+        '''!loop[perfectloop] --> Returns nice loop'''
         await self.get_reddit('perfectloops')
 
     @c.command(name='woah', aliases=['whoa'])
     async def woah(self):
+        '''!woah[whoa] --> Returns some cool stuff'''
         await self.get_reddit('woahdude')
 
     @c.command(name='soda')
     async def soda(self):
+        '''!soda --> Returns an infomercial taken out of context'''
         await self.get_reddit('wheredidthesodago')
 
     @c.command(name='neat')
     async def neat(self):
+        '''!neat --> Returns some neat stuff'''
         await self.get_reddit('interestingasfuck')
 
     @c.command(name='its🔥')
     async def itslit(self):
+        '''!its:fire: --> Returns some lit nature'''
         await self.get_reddit('natureisfuckinglit')
 
     @c.command(name='pubg')
-    async def itslit(self):
+    async def pubg(self):
+        '''!pubg --> Returns some PUBG stuff'''
         await self.get_reddit('pubattlegrounds')
 
 

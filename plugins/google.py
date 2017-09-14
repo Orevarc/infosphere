@@ -10,6 +10,7 @@ GOOGLE_URL = 'https://www.googleapis.com/customsearch/v1'
 
 class Google:
     """
+        Search the web!
     """
     def __init__(self, bot):
         self.bot = bot
@@ -24,7 +25,6 @@ class Google:
             'q': query,
             'cx': '018359127822141064231:fkurjdg6grs',
             'key': 'AIzaSyCzjmdz6z-fPzLHcEItOXTftk6Cege7ez0',
-            # 'key': 'AIzaSyAYxaFE2ITGyu_0p8t1T_aHFUmzVuuR8to',
             'fields': 'items(link)',
             'searchType': 'image',
             'safe': 'high',
@@ -49,20 +49,17 @@ class Google:
 
     @c.command(name="animate")
     async def animate(self, *, query: str):
-        print('inside')
-        """Search Imgur for (almost) anything."""
+        """!animate <query> --> Search for a gif"""
         await self.google_search(query, animated=True)
 
     @c.command(name="img", aliases=["image"])
     async def img(self, *, query: str):
-        """One free random image."""
-        print('img')
+        """!img <query> --> Search for an image on the web"""
         await self.google_search(query)
 
     @c.command(name="face")
     async def face(self, *, query: str):
-        """One free random image."""
-        print('face')
+        """!face <query> --> Find someone's face"""
         await self.google_search(query, faces=True)
 
 

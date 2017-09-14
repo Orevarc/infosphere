@@ -1,40 +1,18 @@
 # -*- coding: utf-8 -*-
-
+import asyncio
 import random
 import re
 
 import requests
 
-from bfkac.decorators import (
+from infosphere.decorators import (
     command,
     hear,
 )
 
-outputs = []
+from discord.ext import commands as c
 
 EXCUSES = {
-    'ian': (
-        "It's the paddle's fault.",
-        "There's too much glare today.",
-        "It's kinda windy in here.",
-        "Javascript can't do that.",
-        "Out of scope.",
-        "That's Finance's job.",
-        "I'm waiting on a design.",
-        "The ball's broken.",
-        "Fucking Javascript!",
-        "wat",
-        "Maq can do it.",
-        "It's Beer Friday.",
-        "It's Thursty Thursday.",
-        "It's... Wet Your Whistle Wednesday.",
-        "It's... ... Tequila Tuesday.",
-        "It's... ... ... Migraine Monday :(.",
-        "Vertica's down.",
-        "There's merge conflicts.",
-        "A designer coded it.",
-        "Hold on, Twitch is fighting the Elite Four.",
-    ),
     'developer': (
         "That's weird…",
         "It's never done that before.",
@@ -215,19 +193,6 @@ HHHEHEHES = (
     'http://i2.kym-cdn.com/photos/images/newsfeed/000/804/887/1c4.jpg',
 )
 
-NOOTS = (
-    'https://www.youtube.com/watch?v=n-GPVRi9hN4',
-    'https://www.youtube.com/watch?v=sAlRCRkuNew',
-    'https://www.youtube.com/watch?v=G_BFchzkhX0',
-    'https://www.youtube.com/watch?v=vOXoOFyBuEw',
-    'https://www.youtube.com/watch?v=qDEsh2z7yKo',
-    'https://www.youtube.com/watch?v=prqQAU0Xemo',
-    'https://www.youtube.com/watch?v=z3IzWy2RC08',
-    'https://www.youtube.com/watch?v=QVA3s_bfb6k',
-    'https://www.youtube.com/watch?v=RSHTJZE5nFs',
-    'https://www.youtube.com/watch?v=sgYaCU2VY_o',
-    'https://www.youtube.com/watch?v=mDC-NDJKZFM',
-)
 
 THE_BUTT_RE = re.compile(r'\bthe\s+cloud\b', re.I)
 BUTT_RE = re.compile(r'\bcloud\b', re.I)
@@ -235,205 +200,130 @@ HORSE_RE = re.compile(r'\bforce\b', re.I)
 BAD_MENTION_RE = re.compile(r'@?(channel|here):?\s*', re.I)
 
 
-@hear(r'\bwot\b')
-def wot(msg, match, data, plugin):
-    outputs.append([data['channel'], 'U WOT M8'])
+# @hear(r'\bbeads\b')
+# def beads(msg, match, data, plugin):
+#     outputs.append([data['channel'], 'Bees??'])
 
 
-@hear(r'\bbeads\b')
-def beads(msg, match, data, plugin):
-    outputs.append([data['channel'], 'Bees??'])
+# @hear(r'\b(cloud|force)\b')
+# def butts(msg, match, data, plugin):
+#     butt_msg = THE_BUTT_RE.sub('my butt', msg)
+#     butt_msg = BUTT_RE.sub('butt', butt_msg)
+#     butt_msg = HORSE_RE.sub('horse', butt_msg)
+#     butt_msg = BAD_MENTION_RE.sub('', butt_msg)
+#     butt_msg = 'more like ' + butt_msg
+#     outputs.append([data['channel'], butt_msg])
 
 
-@hear(r'\b(cloud|force)\b')
-def butts(msg, match, data, plugin):
-    butt_msg = THE_BUTT_RE.sub('my butt', msg)
-    butt_msg = BUTT_RE.sub('butt', butt_msg)
-    butt_msg = HORSE_RE.sub('horse', butt_msg)
-    butt_msg = BAD_MENTION_RE.sub('', butt_msg)
-    butt_msg = 'more like ' + butt_msg
-    outputs.append([data['channel'], butt_msg])
+# @hear(r'h*he(he)+')
+# def hehehe(msg, match, data, plugin):
+#     link = '{}?spam{}'.format(random.choice(HHHEHEHES), random.random())
+#     outputs.append([data['channel'], link])
 
 
-@hear(r'h*he(he)+')
-def hehehe(msg, match, data, plugin):
-    link = '{}?spam{}'.format(random.choice(HHHEHEHES), random.random())
-    outputs.append([data['channel'], link])
+# @hear(r'\bprobably\s+a\s+bad\s+idea\b')
+# def probablyabadidea(msg, match, data, plugin):
+#     outputs.append([data['channel'], 'https://lh4.googleusercontent.com/-9AM6u-R9n-A/U5LXbq6YNrI/AAAAAAAAARk/kxBfq23uhTM/tumblr_msgxi3nLHK1sf32hdo1_500.gif?spam=' + random.random()])
 
 
-@hear(r'\bprobably\s+a\s+bad\s+idea\b')
-def probablyabadidea(msg, match, data, plugin):
-    outputs.append([data['channel'], 'https://lh4.googleusercontent.com/-9AM6u-R9n-A/U5LXbq6YNrI/AAAAAAAAARk/kxBfq23uhTM/tumblr_msgxi3nLHK1sf32hdo1_500.gif?spam=' + random.random()])
+# @hear(r'\bbees\b')
+# def bees(msg, match, data, plugin):
+#     outputs.append([data['channel'], "http://www.wired.com/wp-content/uploads/images_blogs/underwire/2013/01/oprahbees.gif"])
 
 
-@hear(r'haha(ha)+')
-def hahaha(msg, match, data, plugin):
-    outputs.append([data['channel'], ':neutral_face:'])
+# @command('mike')
+# def mike(cmd, rest, data, plugin):
+#     outputs.append([data['channel'], 'https://dl.dropboxusercontent.com/u/10038332/funny_faces/isc65wdsVJP6sKYqb.gif'])
 
 
-@hear(r'\bbees\b')
-def bees(msg, match, data, plugin):
-    outputs.append([data['channel'], "http://www.wired.com/wp-content/uploads/images_blogs/underwire/2013/01/oprahbees.gif"])
-
-
-@hear(r'\bboorant\b')
-def boorant(msg, match, data, plugin):
-    outputs.append([data['channel'], 'I was saying boo-rant'])
-
-
-@hear(r'\bshwan\b')
-def shwan(msg, match, data, plugin):
-    outputs.append([data['channel'], 'SHWAN BWANT!!'])
-
-
-@command('saad')
-def saad(cmd, rest, data, plugin):
-    outputs.append([data['channel'], 'https://dl.dropboxusercontent.com/u/10038332/funny_faces/isc61m114JkbjFKcW.gif'])
-
-
-@command('mike')
-def mike(cmd, rest, data, plugin):
-    outputs.append([data['channel'], 'https://dl.dropboxusercontent.com/u/10038332/funny_faces/isc65wdsVJP6sKYqb.gif'])
-
-
-@command('hula')
-def hula(cmd, rest, data, plugin):
-    outputs.append([data['channel'], "https://bonusly-fog.s3.amazonaws.com/uploads/bonus_image/image/57b76f33076f9136c648aa23/hula.gif"])
-
-
-@command('noot')
-def noot(cmd, rest, data, plugin):
+class Misc:
     '''
-        !excuse <name>
-        Return an excuse for given person (if they have any)
+        Misc. commands
     '''
-    noot = random.choice(NOOTS)
-    outputs.append([data['channel'], noot])
+    def __init__(self, bot):
+        self.bot = bot
+
+    @c.command(name='catfact', aliases=['catfacts'])
+    async def catfact(self):
+        '''!catfact[catfacts] --> Get a 🐱 fact'''
+        url = 'https://catfact.ninja/fact'
+
+        def func():
+            return requests.get(url)
+        response = self.bot.loop.run_in_executor(None, func)
+        while True:
+            await asyncio.sleep(0.25)
+            if response.done():
+                response = response.result().json()
+                break
+        if response:
+            await self.bot.say('{} - {}'.format(':smiley_cat:', response['fact']))
+        else:
+            await self.bot.say('Unable to get a catfact :pouting_cat:')
+
+    @c.command(name='dog', aliases=['doggo'])
+    async def dog(self, *, breed: str):
+        '''!dog[doggo] <breed> --> Get a 🐶 <breed> = list; 
+        <breed> = dog - Get a random dog '''
+        if breed == 'list':
+            url = 'https://dog.ceo/api/breeds/list/all'
+        elif breed == 'dog':
+            url = 'https://dog.ceo/api/breeds/image/random'
+        else:
+            url = 'https://dog.ceo/api/breed/{}/images/random'.format(breed)
+
+        def func():
+            return requests.get(url)
+        response = self.bot.loop.run_in_executor(None, func)
+        while True:
+            await asyncio.sleep(0.25)
+            if response.done():
+                print('3')
+                print(response)
+                print(response.result())
+                response = response.result().json()
+                break
+        if response.get('status') == 'success':
+            if breed == 'list':
+                breeds = ', '.join(list(response['message'].keys()))
+                await self.bot.say(breeds)
+            else:
+                await self.bot.say(response['message'])
+        else:
+            await self.bot.say('{} - {}'.format('🌭', 'Unable to get a '))
+
+    @c.command(name='roulette')
+    async def roulette(self):
+        '''!roulette --> You feeling lucky?'''
+        if random.randint(0, 5):
+            await self.bot.say(':gun: Click...')
+        else:
+            await self.bot.say(':boom: :gun: rekt')
 
 
-@command('excuse')
-def excuse(cmd, rest, data, plugin):
-    '''
-        !excuse <name>
-        Return an excuse for given person (if they have any)
-    '''
-    if rest in EXCUSES:
-        ex = random.choice(EXCUSES[rest])
-        outputs.append([data['channel'], ex])
+def setup(bot):
+    bot.add_cog(Misc(bot))
+# @command('excuse')
+# def excuse(cmd, rest, data, plugin):
+#     '''
+#         !excuse <name>
+#         Return an excuse for given person (if they have any)
+#     '''
+#     if rest in EXCUSES:
+#         ex = random.choice(EXCUSES[rest])
+#         outputs.append([data['channel'], ex])
 
 
-@command('make')
-def make(cmd, rest, data, plugin):
-    '''
-        !make <person> <action>
-        Force a person to go an action, if possible.
-    '''
-    check = rest.strip().split(' ', 1)
-    if len(check) > 1:
-        person, action = check
-    else:
-        person, action = check[0], ''
-
-    msg = ''
-    if action.lower() == 'laugh' and person.lower() in LULZ:
-        msg = random.choice(LULZ[person.lower()])
-    elif action.lower() == 'rant' and person.lower() in RAGE:
-        msg = random.choice(RAGE[person.lower()])
-
-    if msg:
-        outputs.append([data['channel'], msg])
+# @command('showmethebeers', 'smtb')
+# def showmethebeers(cmd, rest, data, plugin):
+#     outputs.append([data['channel'], ':beer:' * random.randint(1, 12)])
 
 
-@command('catfact', 'catfacts')
-def catfacts(cmd, rest, data, plugin):
-    '''
-        !catfact|catfacts
-        Return a random cat fact.
-    '''
-    url = 'http://catfacts-api.appspot.com/api/facts?number=1'
-    response = requests.get(url).json()
-    if response['success'] == 'true':
-        outputs.append([data['channel'], response['facts'][0]])
-    else:
-        outputs.append([data['channel'], 'Unable to get catfact :('])
+# @command('showmethepizzas', 'smtpi')
+# def showmethepizzas(cmd, rest, data, plugin):
+#     outputs.append([data['channel'], ':pizza:' * random.randint(1, 12)])
 
 
-@command('pug')
-def pugs(cmd, rest, data, plugin):
-    '''
-        !pug
-        Return a pug.
-    '''
-    url = 'http://pugme.herokuapp.com/random'
-    response = requests.get(url).json()
-    if response.get('pug'):
-        outputs.append([data['channel'], response['pug']])
-    else:
-        outputs.append([data['channel'], 'Unable to get pug :('])
-
-
-@command('slots')
-def slots(cmd, rest, data, plugin):
-    '''
-       !slots
-       Waste your entire life.
-    '''
-    choices = (
-        ':whyyy:',
-        ':mouth:',
-        ':wat:',
-        ':clog:',
-        ':prepare:',
-        ':yesss:',
-        ':best:',
-        ':pls:',
-    )
-    results = []
-    for i in xrange(3):
-        results.append(random.choice(choices))
-    outputs.append([data['channel'], ' '.join(results)])
-    if results[0] == results[1] == results[2]:
-        outputs.append([data['channel'], ':winamazingprizes: YOU WIN!!! :winamazingprizes:'])
-
-
-@command('roulette')
-def roulette(cmd, rest, data, plugin):
-    if random.randint(0, 5):
-        outputs.append([data['channel'], 'Click...'])
-    else:
-        outputs.append([data['channel'], ':boom:'])
-
-
-@command('showmethemoney', 'smtm')
-def showmethemoney(cmd, rest, data, plugin):
-    outputs.append([data['channel'], ':money_with_wings:' * random.randint(1, 12)])
-
-
-@command('showmethesushi', 'smts')
-def showmethesushi(cmd, rest, data, plugin):
-    outputs.append([data['channel'], ':sushi:' * random.randint(1, 12)])
-
-
-@command('showmethepicards', 'smtp')
-def showmethepicards(cmd, rest, data, plugin):
-    outputs.append([data['channel'], ':picard:' * random.randint(1, 12)])
-
-
-@command('showmethebeers', 'smtb')
-def showmethebeers(cmd, rest, data, plugin):
-    outputs.append([data['channel'], ':beer:' * random.randint(1, 12)])
-
-
-@command('showmethepizzas', 'smtpi')
-def showmethepizzas(cmd, rest, data, plugin):
-    outputs.append([data['channel'], ':pizza:' * random.randint(1, 12)])
-
-
-@command('showmemic')
-def showmemic(cmd, rest, data, plugin):
-    outputs.append([data['channel'], ':microphone:' * random.randint(1, 12)])
-
-# @command('error')
-# def error(cmd, rest, data, plugin):
-#     if rest == 'please':
-#         return 0 / 0
+# @command('showmemic')
+# def showmemic(cmd, rest, data, plugin):
+#     outputs.append([data['channel'], ':microphone:' * random.randint(1, 12)])
