@@ -1,59 +1,307 @@
-#!/usr/bin/env python
+# #!/usr/bin/env python
 
-import logging
-import logging.config
-import os
+# import logging
+# import logging.config
+# import os
+# import sys
+# import yaml
+# from argparse import ArgumentParser
+
+# from infosphere.bot import Infosphere
+
+
+# def main_loop(bot):
+#     try:
+#         bot.start()
+#     except KeyboardInterrupt:
+#         sys.exit(0)
+#     except:
+#         logging.exception('Fatal error')
+
+
+# def parse_args():
+#     parser = ArgumentParser()
+#     parser.add_argument(
+#         '-c',
+#         '--config',
+#         help='Full path to config file.',
+#         metavar='path'
+#     )
+#     return parser.parse_args()
+
+
+# def main():
+#     args = parse_args()
+#     directory = os.path.dirname(sys.argv[0])
+#     if not directory.startswith('/'):
+#         directory = os.path.abspath('{}/{}'.format(os.getcwd(), directory))
+
+#     config = yaml.load(file(args.config or 'infosphere.yaml', 'r'))
+#     config['DIRECTORY'] = directory
+
+#     logging_config = yaml.load(file('logging.yaml', 'r'))
+#     logging.config.dictConfig(logging_config)
+#     logger = logging.getLogger('infosphere')
+
+#     logger.info('Starting up...')
+#     logger.info(directory)
+#     bot = Infosphere(config)
+
+#     is_daemon = config.get('DAEMON')
+#     if is_daemon:
+#         import daemon
+#         with daemon.DaemonContext():
+#             main_loop(bot)
+#     main_loop(bot)
+
+
+# if __name__ == '__main__':
+#     main()
+##########################################
+###################################################
+
 import sys
-import yaml
-from argparse import ArgumentParser
+import os
+import asyncio
+import json
 
-from infosphere.bot import Infosphere
+from io import StringIO
+from datetime import datetime
+from discord import Game, InvalidArgument, HTTPException
+from discord.ext import commands as c
+from infosphere.helpers import is_owner, get_logger
 
 
-def main_loop(bot):
+# Set up config variables
+with open("config/config.json") as cfg:
+    config = json.load(cfg)
+
+token        = config["token"]
+version = config['version']
+description = config['description']
+bot_name     = config["bot_name"]
+bot_avatar   = config["bot_avatar"]
+prefix       = config["command_prefix"]
+log_file     = config["log_file"]
+log_messages = config["log_messages"]
+log_commands = config["log_commands"]
+cmd_on_edit  = config["commands_on_edit"]
+
+# Grab the blacklist
+# with open("db/blacklist.json") as bl:
+#     blacklist = json.load(bl)["users"]
+
+log = get_logger(log_file)
+
+# Set the bot and basic variables up
+bot = c.Bot(c.when_mentioned_or(prefix), pm_help=True, description=description)
+plugins = [] # Plugin holder
+first_launch = True
+
+# Helper function to load plugins
+def load_plugins():
+    for p in os.listdir("plugins"):
+        if p.endswith(".py"):
+            p = p.rstrip(".py")
+            try:
+                bot.load_extension(f'plugins.{p}')
+                plugins.append(p)
+            except Exception as error:
+                exc = "{0}: {1}".format(type(error).__name__, error)
+                log.warning(f"Failed to load plugin {p}:\n    {exc}")
+    first_launch = False
+
+# Helper function to change avatar and username
+async def update_profile(name, picture):
+    picture = f"config/{picture}"
+    if os.path.isfile(picture):
+        with open(picture, "rb") as avatar:
+            await bot.edit_profile(avatar=avatar.read())
+            log.info("Bot avatar set.")
+        await bot.edit_profile(username=name)
+        log.info("Bot name set.")
+
+# Events
+@bot.event
+async def on_ready():
+    date = datetime.now()
+    # Set the bot's name and avatar
+    if first_launch:
+        load_plugins()
+        try:
+            await update_profile(bot_name, bot_avatar)
+        except Exception as err:
+            await log.warning("Unable to update the bot's profile: {err}.")
+
+
+    # Status header
+    log.info("------------------------STATUS------------------------")
+    log.info(f"{date}")
+    log.info(f"Infosphere v{version}")
+    log.info(f"Logged in as {bot.user} ({bot.user.id})")
+    log.info("Plugins: {0}".format(", ".join(plugins)))
+    log.info("------------------------STATUS------------------------")
+
+@bot.event
+async def on_message(msg):
+    # Log it
+    if log_messages:
+        log.info(f"[{msg.server} - #{msg.channel}] <{msg.author}>: {msg.content}")
+    # Handle the commands
+    await bot.process_commands(msg)
+
+@bot.event
+async def on_message_edit(old, new):
+    if cmd_on_edit:
+        await bot.process_commands(new)
+
+@bot.event
+async def on_command(cmd, ctx):
+    if log_commands:
+        command = f"{ctx.message.content}"
+        user = f"{ctx.message.author}"
+        location = f"[{ctx.message.server}] - #{ctx.message.channel}"
+        log.info(f'[COMMAND] `{command}` by `{user}` in `{location}`')
+
+@bot.event
+async def on_command_error(err, ctx):
+    channel = ctx.message.channel
+    if isinstance(err, c.NoPrivateMessage):
+        await bot.send_message(channel,
+            "\U000026A0 This command is not available in DMs.")
+    elif isinstance(err, c.CheckFailure):
+        await bot.send_message(channel,
+            "\U0001F6AB I'm sorry, I'm afraid I can't do that.")
+    elif isinstance(err, c.MissingRequiredArgument):
+        await bot.send_message(channel,
+            "\U00002754 Missing argument(s).")
+    elif isinstance(err, c.DisabledCommand):
+        pass
+
+@bot.event
+async def on_server_join(srv):
+    log.info(f"[JOIN] {srv.name}")
+
+@bot.event
+async def on_server_remove(srv):
+    log.info(f"[LEAVE] {srv.name}")
+
+# Global check for all commands
+# This applies to EVERY command, even those in extensions
+@bot.check
+def allowed(ctx):
+    # return ctx.message.author.id not in blacklist
+    return True
+
+# Built-in commands
+# Step the bot
+@bot.command(name="quit")
+@is_owner()
+async def bot_quit():
+    """Shut the bot down."""
+    await bot.say("Shutting down...\n\U0001f44b")
+    await bot.logout()
+
+@bot.command(name="info")
+async def bot_info():
+    """Display information about the bot."""
+    await bot.say("Infosphere {version} (https://github.com/Orevarc/infosphere)")
+
+@bot.command(name="status", aliases=["playing"])
+async def bot_status(*, status: str):
+    """Change the bot's 'playing' status.
+
+    If the status is set to '!none' it will be disabled.
+    """
+    if status.lower() == "!none":
+        game = None
+    else:
+        game = Game(name=status)
+    await bot.change_status(game=game)
+    await bot.say("\U00002705")
+
+@bot.command()
+async def ping():
+    await bot.say("Pong!")
+
+@bot.group(aliases=["plugins", "pl"], pass_context=True)
+async def plugin(ctx):
+    """Plugin handling.
+
+    Running the command without arguments will list loaded plugins.
+    """
+    if ctx.invoked_subcommand is None:
+        await bot.say(", ".join(plugins))
+
+@plugin.command(name="load")
+@is_owner()
+async def plugin_load(name: str):
+    """Load a plugin."""
+    if name in plugins:
+        await bot.say(f"\U000026A0 Plugin {name} is already loaded.")
+        return
+
+    if not os.path.isfile(f"plugins/{name}.py"):
+        await bot.say(f"\U00002754 No plugin {name} exists.")
+        return
+
     try:
-        bot.start()
-    except KeyboardInterrupt:
-        sys.exit(0)
+        bot.load_extension(f"plugins.{name}")
+        plugins.append(name)
+        await bot.say(f"\U00002705 Plugin {name} loaded.")
+    except Exception as error:
+        exc = "{0}: {1}".format(type(error).__name__, error)
+        await bot.say(f"\U00002757 Error loading {name}.\n```py\n{exc}\n```")
+
+@plugin.command(name="unload")
+@is_owner()
+async def plugin_unload(name: str):
+    """Unload a plugin."""
+    if name not in plugins:
+        await bot.say(f"\U000026A0 Plugin {name} is not loaded.")
+        return
+
+    try:
+        bot.unload_extension(f"plugins.{name}")
+        plugins.remove(name)
+        await bot.say(f"\U00002705 Plugin {name} unloaded.")
     except:
-        logging.exception('Fatal error')
+        await bot.say(f"\U00002757 Error unloading {name}.")
 
+@bot.command(name="eval", hidden=True, pass_context=True, enabled=False)
+@is_owner()
+async def evaluate(ctx, *, code: str):
+    """Extremely unsafe eval command."""
+    code = code.strip("` ")
+    result = None
+    try:
+        result = eval(code)
+        if asyncio.iscoroutine(result):
+            result = await result
+    except Exception as err:
+        await bot.say(python.format(type(err).__name__ + ": " + str(error)))
+        return
 
-def parse_args():
-    parser = ArgumentParser()
-    parser.add_argument(
-        '-c',
-        '--config',
-        help='Full path to config file.',
-        metavar='path'
-    )
-    return parser.parse_args()
+    await bot.say(f"```py\n{result}\n```")
 
+@bot.command(name="exec", hidden=True, pass_context=True, enabled=False)
+@is_owner()
+async def execute(ctx, *, code: str):
+    """If you thought eval was dangerous, wait'll you see exec!"""
+    code = code.strip("```").lstrip("py")
+    result = None
+    env = {}
+    env.update(locals())
+    stdout = sys.stdout
+    redirect = sys.stdout = StringIO()
 
-def main():
-    args = parse_args()
-    directory = os.path.dirname(sys.argv[0])
-    if not directory.startswith('/'):
-        directory = os.path.abspath('{}/{}'.format(os.getcwd(), directory))
+    try:
+        exec(code, globals(), env)
+    except Exception as err:
+        await bot.say(python.format(type(err).__name__ + ": " + str(error)))
+    finally:
+        sys.stdout = stdout
 
-    config = yaml.load(file(args.config or 'infosphere.yaml', 'r'))
-    config['DIRECTORY'] = directory
+    await bot.say(f"```\n{redirect.getvalue()}\n```")
 
-    logging_config = yaml.load(file('logging.yaml', 'r'))
-    logging.config.dictConfig(logging_config)
-    logger = logging.getLogger('infosphere')
-
-    logger.info('Starting up...')
-    logger.info(directory)
-    bot = Infosphere(config)
-
-    is_daemon = config.get('DAEMON')
-    if is_daemon:
-        import daemon
-        with daemon.DaemonContext():
-            main_loop(bot)
-    main_loop(bot)
-
-
-if __name__ == '__main__':
-    main()
+bot.run(token)

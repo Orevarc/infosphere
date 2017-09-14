@@ -1,0 +1,14 @@
+{
+    "owner": "Orevarc",
+    "version": "0.0.1",
+    "token": "MzU3NTgyNTcwMTI2NDQyNDk2.DJsAgQ.9MqLHmNuTLJZ2sxzZS_C7u6dHaI",
+    "bot_id": "357582570126442496",
+    "bot_name": "Infosphere",
+    "description": "A Discord Bot",
+    "bot_avatar": "",
+    "command_prefix": "!",
+    "commands_on_edit": true,
+    "log_file": "infosphere.log",
+    "log_messages": true,
+    "log_commands": true
+}
