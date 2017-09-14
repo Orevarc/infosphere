@@ -2,8 +2,6 @@ import asyncio
 import random
 import requests
 
-from infosphere.decorators import command
-
 from discord.ext import commands as c
 
 REDDIT_URL = 'https://www.reddit.com/r/{}.json'
