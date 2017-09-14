@@ -17,21 +17,15 @@ class Reddit:
 
         def func():
             if top:
-                print('top')
                 return requests.get(
                     REDDIT_URL_TOP.format(subreddit), headers=headers)
             else:
-                print('not top')
                 return requests.get(
                     REDDIT_URL.format(subreddit), headers=headers)
         response = self.bot.loop.run_in_executor(None, func)
-        print(response)
         while True:
             await asyncio.sleep(0.25)
-            print('loop')
             if response.done():
-                print("HERE")
-                print(response)
                 response = response.result().json()
                 break
         posts = []

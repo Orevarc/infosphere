@@ -16,7 +16,6 @@ class Google:
         self.bot = bot
     
     async def google_search(self, query, animated=False, faces=False):
-        print('Google search')
 
         def func():
             return requests.get(GOOGLE_URL, params=params)
