@@ -1,143 +1,117 @@
-import logging
+import asyncio
 import random
-
 import requests
 
-from bfkac.decorators import command
+from infosphere.decorators import command
 
-outputs = []
-logger = logging.getLogger('bfkac')
+from discord.ext import commands as c
 
-REDDIT_URL = 'http://www.reddit.com/r/{}.json'
+REDDIT_URL = 'https://www.reddit.com/r/{}.json'
 REDDIT_URL_TOP = 'https://www.reddit.com/r/{}/top.json?sort=top&t=week'
 
 
-def getReddit(subreddit, top=False):
-    headers = {'user-agent': 'BFKAC'}
-    if top:
-        response = requests.get(REDDIT_URL_TOP.format(subreddit), headers=headers).json()
-    else:
-        response = requests.get(REDDIT_URL.format(subreddit), headers=headers).json()
-    posts = []
-    for p in response['data']['children']:
-        if not (p['data']['is_self'] or p['data']['stickied']):
-            posts.append(p['data'])
+class Reddit:
+    def __init__(self, bot):
+        self.bot = bot
 
-    if len(posts) == 0:
-        return "Couldn't find anything..."
-    else:
-        post = random.choice(posts)
-        return '{} {}'.format(post['title'], post['url'])
+    async def get_reddit(self, subreddit, top=False):
+        headers = {'user-agent': 'infosphere'}
 
+        def func():
+            if top:
+                print('top')
+                return requests.get(
+                    REDDIT_URL_TOP.format(subreddit), headers=headers)
+            else:
+                print('not top')
+                return requests.get(
+                    REDDIT_URL.format(subreddit), headers=headers)
+        response = self.bot.loop.run_in_executor(None, func)
+        print(response)
+        while True:
+            await asyncio.sleep(0.25)
+            print('loop')
+            if response.done():
+                print("HERE")
+                print(response)
+                response = response.result().json()
+                break
+        posts = []
+        for p in response['data']['children']:
+            if not (p['data']['is_self'] or p['data']['stickied']):
+                posts.append(p['data'])
 
-@command('aww')
-def aww(cmd, rest, data, plugin):
-    '''
-        !aww
-        Return a random cute image.
-    '''
-    link = getReddit('aww')
-    outputs.append([data['channel'], link])
+        if len(posts) == 0:
+            await self.bot.say("Couldn't find anything...")
+        else:
+            post = random.choice(posts)
+            await self.bot.say('{} {}'.format(post['title'], post['url']))
 
+    @c.command(name='aww')
+    async def aww(self):
+        await self.get_reddit('aww')
 
-@command('eww')
-def eww(cmd, rest, data, plugin):
-    '''
-        !eww
-        Return a random gross bug.
-    '''
-    link = getReddit('whatsthisbug')
-    outputs.append([data['channel'], link])
+    @c.command(name='eww')
+    async def eww(self):
+        await self.get_reddit('whatsthisbug')
 
+    @c.command(name='loop', aliases=['perfectloop'])
+    async def loop(self):
+        await self.get_reddit('perfectloops')
 
-@command('hqg', 'highqualitygif')
-def hqg(cmd, rest, data, plugin):
-    '''
-        !hqg|highqualitygif
-        Return a random high quality gif.
-    '''
-    link = getReddit('highqualitygifs')
-    outputs.append([data['channel'], link])
+    @c.command(name='woah', aliases=['whoa'])
+    async def woah(self):
+        await self.get_reddit('woahdude')
 
+    @c.command(name='soda')
+    async def soda(self):
+        await self.get_reddit('wheredidthesodago')
 
-@command('perfectloop', 'loop')
-def perfectloops(cmd, rest, data, plugin):
-    '''
-        !loop|perfectloop
-        Return a random perfect loop.
-    '''
-    link = getReddit('perfectloops')
-    outputs.append([data['channel'], link])
+    @c.command(name='neat')
+    async def neat(self):
+        await self.get_reddit('interestingasfuck')
 
+    @c.command(name='its🔥')
+    async def itslit(self):
+        await self.get_reddit('natureisfuckinglit')
 
-@command('woah', 'whoa')
-def woahdude(cmd, rest, data, plugin):
-    '''
-        !whoa|woah
-        Return a random mindblowing thing.
-    '''
-    link = getReddit('woahdude')
-    outputs.append([data['channel'], link])
-
-
-@command('soda', 'soda?')
-def wheredidthesodago(cmd, rest, data, plugin):
-    '''
-        !soda|soda?
-        Return a random infomercial gif.
-    '''
-    link = getReddit('wheredidthesodago')
-    outputs.append([data['channel'], link])
+    @c.command(name='pubg')
+    async def itslit(self):
+        await self.get_reddit('pubattlegrounds')
 
 
-@command('bro')
-def animalsbeingbros(cmd, rest, data, plugin):
-    '''
-        !bro
-        Return a random animal being a bro.
-    '''
-    link = getReddit('animalsbeingbros')
-    outputs.append([data['channel'], link])
+def setup(bot):
+    bot.add_cog(Reddit(bot))
+
+# @command('bro')
+# def animalsbeingbros(cmd, rest, data, plugin):
+#     '''
+#         !bro
+#         Return a random animal being a bro.
+#     '''
+#     link = getReddit('animalsbeingbros')
+#     outputs.append([data['channel'], link])
 
 
-@command('jerk')
-def animalsbeingjerks(cmd, rest, data, plugin):
-    '''
-        !jerk
-        Return a random animal being a jerk.
-    '''
-    link = getReddit('animalsbeingjerks')
-    outputs.append([data['channel'], link])
+# @command('jerk')
+# def animalsbeingjerks(cmd, rest, data, plugin):
+#     '''
+#         !jerk
+#         Return a random animal being a jerk.
+#     '''
+#     link = getReddit('animalsbeingjerks')
+#     outputs.append([data['channel'], link])
 
 
-@command('jerkbro', 'brojerk')
-def jerkbro(cmd, rest, data, plugin):
-    '''
-        !jerkbro|brojerk
-        Return a random animal either being a bro or a jerk.
-    '''
-    if random.random() >= 0.5:
-        link = getReddit('animalsbeingjerks')
-    else:
-        link = getReddit('animalsbeingbros')
-    outputs.append([data['channel'], link])
+# @command('jerkbro', 'brojerk')
+# def jerkbro(cmd, rest, data, plugin):
+#     '''
+#         !jerkbro|brojerk
+#         Return a random animal either being a bro or a jerk.
+#     '''
+#     if random.random() >= 0.5:
+#         link = getReddit('animalsbeingjerks')
+#     else:
+#         link = getReddit('animalsbeingbros')
+#     outputs.append([data['channel'], link])
 
-
-@command('neat')
-def neat(cmd, rest, data, plugin):
-    '''
-        !neat
-        Return a random post from interestingasfuck.
-    '''
-    link = getReddit('interestingasfuck', True)
-    outputs.append([data['channel'], link])
-
-
-@command('its:fire:')
-def itslit(cmd, rest, data, plugin):
-    '''
-        !its :fire:
-        Return a random post from natureisfuckinglit.
-    '''
-    link = getReddit('natureisfuckinglit', True)
-    outputs.append([data['channel'], link])

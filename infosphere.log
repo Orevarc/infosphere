@@ -1208,3 +1208,501 @@ Infosphere v0.0.1
 Logged in as infosphere-bot#5530 (357582570126442496)
 Plugins: google
 ------------------------STATUS------------------------
+PyNaCl is not installed, voice will NOT be supported
+on_ready has successfully been registered as an event
+on_message has successfully been registered as an event
+on_message_edit has successfully been registered as an event
+on_command has successfully been registered as an event
+on_command_error has successfully been registered as an event
+on_server_join has successfully been registered as an event
+on_server_remove has successfully been registered as an event
+logging in using static token
+Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+sent the identify payload to create the websocket
+Failed to load plugin fli:
+    ModuleNotFoundError: No module named 'plugins.fli'
+Failed to load plugin misc:
+    ModuleNotFoundError: No module named 'bfkac'
+Failed to load plugin reddit:
+    ModuleNotFoundError: No module named 'bfkac'
+Failed to load plugin urban:
+    ModuleNotFoundError: No module named 'bfkac'
+------------------------STATUS------------------------
+2017-09-14 13:08:26.593940
+Infosphere v0.0.1
+Logged in as infosphere-bot#5530 (357582570126442496)
+Plugins: google
+------------------------STATUS------------------------
+PyNaCl is not installed, voice will NOT be supported
+on_ready has successfully been registered as an event
+on_message has successfully been registered as an event
+on_message_edit has successfully been registered as an event
+on_command has successfully been registered as an event
+on_command_error has successfully been registered as an event
+on_server_join has successfully been registered as an event
+on_server_remove has successfully been registered as an event
+logging in using static token
+Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+sent the identify payload to create the websocket
+Failed to load plugin misc:
+    ModuleNotFoundError: No module named 'bfkac'
+Failed to load plugin reddit:
+    ModuleNotFoundError: No module named 'bfkac'
+Failed to load plugin urban:
+    ModuleNotFoundError: No module named 'bfkac'
+------------------------STATUS------------------------
+2017-09-14 13:09:09.544325
+Infosphere v0.0.1
+Logged in as infosphere-bot#5530 (357582570126442496)
+Plugins: fli, google
+------------------------STATUS------------------------
+[infosphere-test - #general] <Orevarc#8153>: !flip test
+[COMMAND] `!flip test` by `Orevarc#8153` in `[infosphere-test] - #general`
+[infosphere-test - #general] <infosphere-bot#5530>: ʇsǝʇ
+PyNaCl is not installed, voice will NOT be supported
+on_ready has successfully been registered as an event
+on_message has successfully been registered as an event
+on_message_edit has successfully been registered as an event
+on_command has successfully been registered as an event
+on_command_error has successfully been registered as an event
+on_server_join has successfully been registered as an event
+on_server_remove has successfully been registered as an event
+logging in using static token
+Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+sent the identify payload to create the websocket
+Failed to load plugin misc:
+    ModuleNotFoundError: No module named 'bfkac'
+Failed to load plugin reddit:
+    ModuleNotFoundError: No module named 'bfkac'
+Failed to load plugin urban:
+    ModuleNotFoundError: No module named 'bfkac'
+------------------------STATUS------------------------
+2017-09-14 13:09:58.017029
+Infosphere v0.0.1
+Logged in as infosphere-bot#5530 (357582570126442496)
+Plugins: fli, google
+------------------------STATUS------------------------
+[infosphere-test - #general] <Orevarc#8153>: !flip test
+[COMMAND] `!flip test` by `Orevarc#8153` in `[infosphere-test] - #general`
+[infosphere-test - #general] <infosphere-bot#5530>: (╯°□°）╯︵ ʇsǝʇ
+[infosphere-test - #general] <Orevarc#8153>: !flip (╯°□°）╯︵
+[COMMAND] `!flip (╯°□°）╯︵` by `Orevarc#8153` in `[infosphere-test] - #general`
+[infosphere-test - #general] <infosphere-bot#5530>: (╯°□°）╯︵ ︵╯）°□°╯)
+[infosphere-test - #general] <Orevarc#8153>: !flip
+[COMMAND] `!flip` by `Orevarc#8153` in `[infosphere-test] - #general`
+[infosphere-test - #general] <infosphere-bot#5530>: ❔ Missing argument(s).
+[infosphere-test - #general] <Orevarc#8153>: !flip
+[COMMAND] `!flip` by `Orevarc#8153` in `[infosphere-test] - #general`
+[infosphere-test - #general] <infosphere-bot#5530>: ❔ Missing argument(s).
+[infosphere-test - #general] <Orevarc#8153>: !flip table
+[COMMAND] `!flip table` by `Orevarc#8153` in `[infosphere-test] - #general`
+[infosphere-test - #general] <infosphere-bot#5530>: (╯°□°）╯︵ ǝʃqɐʇ
+[infosphere-test - #general] <Orevarc#8153>: !rageflip {}[]
+[COMMAND] `!rageflip {}[]` by `Orevarc#8153` in `[infosphere-test] - #general`
+[infosphere-test - #general] <infosphere-bot#5530>: (ノಠ益ಠ)ノ彡 []{}
+PyNaCl is not installed, voice will NOT be supported
+on_ready has successfully been registered as an event
+on_message has successfully been registered as an event
+on_message_edit has successfully been registered as an event
+on_command has successfully been registered as an event
+on_command_error has successfully been registered as an event
+on_server_join has successfully been registered as an event
+on_server_remove has successfully been registered as an event
+logging in using static token
+Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+sent the identify payload to create the websocket
+Failed to load plugin misc:
+    ModuleNotFoundError: No module named 'bfkac'
+Failed to load plugin reddit:
+    TypeError: object() takes no parameters
+Failed to load plugin urban:
+    ModuleNotFoundError: No module named 'bfkac'
+------------------------STATUS------------------------
+2017-09-14 13:26:30.055373
+Infosphere v0.0.1
+Logged in as infosphere-bot#5530 (357582570126442496)
+Plugins: fli, google
+------------------------STATUS------------------------
+PyNaCl is not installed, voice will NOT be supported
+on_ready has successfully been registered as an event
+on_message has successfully been registered as an event
+on_message_edit has successfully been registered as an event
+on_command has successfully been registered as an event
+on_command_error has successfully been registered as an event
+on_server_join has successfully been registered as an event
+on_server_remove has successfully been registered as an event
+logging in using static token
+Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+sent the identify payload to create the websocket
+Failed to load plugin misc:
+    ModuleNotFoundError: No module named 'bfkac'
+Failed to load plugin urban:
+    ModuleNotFoundError: No module named 'bfkac'
+------------------------STATUS------------------------
+2017-09-14 13:26:55.638013
+Infosphere v0.0.1
+Logged in as infosphere-bot#5530 (357582570126442496)
+Plugins: fli, google, reddit
+------------------------STATUS------------------------
+[infosphere-test - #general] <Orevarc#8153>: !aww
+[COMMAND] `!aww` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTP connection (1): www.reddit.com
+Starting new HTTPS connection (1): www.reddit.com
+[infosphere-test - #general] <Orevarc#8153>: !eww
+[COMMAND] `!eww` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTP connection (1): www.reddit.com
+Starting new HTTPS connection (1): www.reddit.com
+PyNaCl is not installed, voice will NOT be supported
+on_ready has successfully been registered as an event
+on_message has successfully been registered as an event
+on_message_edit has successfully been registered as an event
+on_command has successfully been registered as an event
+on_command_error has successfully been registered as an event
+on_server_join has successfully been registered as an event
+on_server_remove has successfully been registered as an event
+logging in using static token
+Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+sent the identify payload to create the websocket
+Failed to load plugin misc:
+    ModuleNotFoundError: No module named 'bfkac'
+Failed to load plugin urban:
+    ModuleNotFoundError: No module named 'bfkac'
+------------------------STATUS------------------------
+2017-09-14 13:28:20.594248
+Infosphere v0.0.1
+Logged in as infosphere-bot#5530 (357582570126442496)
+Plugins: fli, google, reddit
+------------------------STATUS------------------------
+[infosphere-test - #general] <Orevarc#8153>: !aww
+[COMMAND] `!aww` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTP connection (1): www.reddit.com
+Starting new HTTPS connection (1): www.reddit.com
+PyNaCl is not installed, voice will NOT be supported
+on_ready has successfully been registered as an event
+on_message has successfully been registered as an event
+on_message_edit has successfully been registered as an event
+on_command has successfully been registered as an event
+on_command_error has successfully been registered as an event
+on_server_join has successfully been registered as an event
+on_server_remove has successfully been registered as an event
+logging in using static token
+Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+sent the identify payload to create the websocket
+Failed to load plugin misc:
+    ModuleNotFoundError: No module named 'bfkac'
+Failed to load plugin urban:
+    ModuleNotFoundError: No module named 'bfkac'
+------------------------STATUS------------------------
+2017-09-14 13:28:47.754712
+Infosphere v0.0.1
+Logged in as infosphere-bot#5530 (357582570126442496)
+Plugins: fli, google, reddit
+------------------------STATUS------------------------
+[infosphere-test - #general] <Orevarc#8153>: !aww
+[COMMAND] `!aww` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTP connection (1): www.reddit.com
+Starting new HTTPS connection (1): www.reddit.com
+PyNaCl is not installed, voice will NOT be supported
+on_ready has successfully been registered as an event
+on_message has successfully been registered as an event
+on_message_edit has successfully been registered as an event
+on_command has successfully been registered as an event
+on_command_error has successfully been registered as an event
+on_server_join has successfully been registered as an event
+on_server_remove has successfully been registered as an event
+logging in using static token
+Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+sent the identify payload to create the websocket
+Failed to load plugin misc:
+    ModuleNotFoundError: No module named 'bfkac'
+Failed to load plugin urban:
+    ModuleNotFoundError: No module named 'bfkac'
+------------------------STATUS------------------------
+2017-09-14 13:29:27.467375
+Infosphere v0.0.1
+Logged in as infosphere-bot#5530 (357582570126442496)
+Plugins: fli, google, reddit
+------------------------STATUS------------------------
+PyNaCl is not installed, voice will NOT be supported
+on_ready has successfully been registered as an event
+on_message has successfully been registered as an event
+on_message_edit has successfully been registered as an event
+on_command has successfully been registered as an event
+on_command_error has successfully been registered as an event
+on_server_join has successfully been registered as an event
+on_server_remove has successfully been registered as an event
+logging in using static token
+Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+sent the identify payload to create the websocket
+Failed to load plugin misc:
+    ModuleNotFoundError: No module named 'bfkac'
+Failed to load plugin urban:
+    ModuleNotFoundError: No module named 'bfkac'
+------------------------STATUS------------------------
+2017-09-14 13:29:47.168187
+Infosphere v0.0.1
+Logged in as infosphere-bot#5530 (357582570126442496)
+Plugins: fli, google, reddit
+------------------------STATUS------------------------
+[infosphere-test - #general] <Orevarc#8153>: !aww
+[COMMAND] `!aww` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTP connection (1): www.reddit.com
+Starting new HTTPS connection (1): www.reddit.com
+[infosphere-test - #general] <Orevarc#8153>: !face mike
+[COMMAND] `!face mike` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTPS connection (1): www.googleapis.com
+[infosphere-test - #general] <infosphere-bot#5530>: https://upload.wikimedia.org/wikipedia/en/7/7b/Mike_Pollock_Headshot.jpg
+[infosphere-test - #general] <Orevarc#8153>: !face bradley chong
+[COMMAND] `!face bradley chong` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTPS connection (1): www.googleapis.com
+[infosphere-test - #general] <infosphere-bot#5530>: https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/1/000/23c/193/3192abd.jpg
+[infosphere-test - #general] <Orevarc#8153>: !face antoni piotrowski
+[COMMAND] `!face antoni piotrowski` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTPS connection (1): www.googleapis.com
+[infosphere-test - #general] <infosphere-bot#5530>: http://images.arcadja.com/piotrowski_antoni-l_arrestation_d_un_gentilhomme_polona~OM8e9300~10675_20170516_73_1170.jpg
+[infosphere-test - #general] <Orevarc#8153>: !face michael cravero
+[COMMAND] `!face michael cravero` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTPS connection (1): www.googleapis.com
+[infosphere-test - #general] <infosphere-bot#5530>: https://lh3.googleusercontent.com/Q-IKZY563uyco9kHBDba80a8WRgt0-J53o_8WyDMS3ZlD8IRBVdw2KWetnvccEPgtaRTMl-vKw=w360-c-h180-e100-v1
+[infosphere-test - #general] <Orevarc#8153>: !face michael cravero
+[COMMAND] `!face michael cravero` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTPS connection (1): www.googleapis.com
+[infosphere-test - #general] <infosphere-bot#5530>: https://pbs.twimg.com/profile_images/587023377824612352/TS-rMopo_400x400.jpg
+[infosphere-test - #general] <Orevarc#8153>: !face shawn burant
+[COMMAND] `!face shawn burant` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTPS connection (1): www.googleapis.com
+[infosphere-test - #general] <infosphere-bot#5530>: http://images.peekyou.com/4065/6424/shawn_burant_406564242.jpeg
+[infosphere-test - #general] <Orevarc#8153>: !face shawn burant
+[COMMAND] `!face shawn burant` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTPS connection (1): www.googleapis.com
+[infosphere-test - #general] <infosphere-bot#5530>: https://pbs.twimg.com/media/A_-He2ZCQAA5awO.jpg
+[infosphere-test - #general] <Orevarc#8153>: !face saad kabir
+[COMMAND] `!face saad kabir` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTPS connection (1): www.googleapis.com
+[infosphere-test - #general] <infosphere-bot#5530>: https://lh5.googleusercontent.com/-wd8FiMVAsG4/AAAAAAAAAAI/AAAAAAAAEjs/nC-ZGHb1CIs/photo.jpg
+PyNaCl is not installed, voice will NOT be supported
+on_ready has successfully been registered as an event
+on_message has successfully been registered as an event
+on_message_edit has successfully been registered as an event
+on_command has successfully been registered as an event
+on_command_error has successfully been registered as an event
+on_server_join has successfully been registered as an event
+on_server_remove has successfully been registered as an event
+logging in using static token
+Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+sent the identify payload to create the websocket
+Failed to load plugin misc:
+    ModuleNotFoundError: No module named 'bfkac'
+Failed to load plugin urban:
+    ModuleNotFoundError: No module named 'bfkac'
+------------------------STATUS------------------------
+2017-09-14 13:35:37.498851
+Infosphere v0.0.1
+Logged in as infosphere-bot#5530 (357582570126442496)
+Plugins: fli, google, reddit
+------------------------STATUS------------------------
+[infosphere-test - #general] <Orevarc#8153>: !aww
+[COMMAND] `!aww` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTP connection (1): www.reddit.com
+Starting new HTTPS connection (1): www.reddit.com
+PyNaCl is not installed, voice will NOT be supported
+on_ready has successfully been registered as an event
+on_message has successfully been registered as an event
+on_message_edit has successfully been registered as an event
+on_command has successfully been registered as an event
+on_command_error has successfully been registered as an event
+on_server_join has successfully been registered as an event
+on_server_remove has successfully been registered as an event
+logging in using static token
+Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+sent the identify payload to create the websocket
+Failed to load plugin misc:
+    ModuleNotFoundError: No module named 'bfkac'
+Failed to load plugin urban:
+    ModuleNotFoundError: No module named 'bfkac'
+------------------------STATUS------------------------
+2017-09-14 13:36:09.281946
+Infosphere v0.0.1
+Logged in as infosphere-bot#5530 (357582570126442496)
+Plugins: fli, google, reddit
+------------------------STATUS------------------------
+[infosphere-test - #general] <Orevarc#8153>: !aww
+[COMMAND] `!aww` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTPS connection (1): www.reddit.com
+PyNaCl is not installed, voice will NOT be supported
+on_ready has successfully been registered as an event
+on_message has successfully been registered as an event
+on_message_edit has successfully been registered as an event
+on_command has successfully been registered as an event
+on_command_error has successfully been registered as an event
+on_server_join has successfully been registered as an event
+on_server_remove has successfully been registered as an event
+logging in using static token
+Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+sent the identify payload to create the websocket
+Failed to load plugin misc:
+    ModuleNotFoundError: No module named 'bfkac'
+Failed to load plugin urban:
+    ModuleNotFoundError: No module named 'bfkac'
+------------------------STATUS------------------------
+2017-09-14 13:36:49.024425
+Infosphere v0.0.1
+Logged in as infosphere-bot#5530 (357582570126442496)
+Plugins: fli, google, reddit
+------------------------STATUS------------------------
+[infosphere-test - #general] <Orevarc#8153>: !aww
+Starting new HTTPS connection (1): www.reddit.com
+[COMMAND] `!aww` by `Orevarc#8153` in `[infosphere-test] - #general`
+_GatheringFuture exception was never retrieved
+future: <_GatheringFuture finished exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/Users/Raiden/anaconda/envs/bbytes/lib/python3.6/site-packages/discord/client.py", line 519, in run
+    self.loop.run_until_complete(self.start(*args, **kwargs))
+  File "/Users/Raiden/anaconda/envs/bbytes/lib/python3.6/asyncio/base_events.py", line 454, in run_until_complete
+    self.run_forever()
+  File "/Users/Raiden/anaconda/envs/bbytes/lib/python3.6/asyncio/base_events.py", line 421, in run_forever
+    self._run_once()
+  File "/Users/Raiden/anaconda/envs/bbytes/lib/python3.6/asyncio/base_events.py", line 1425, in _run_once
+    handle._run()
+  File "/Users/Raiden/anaconda/envs/bbytes/lib/python3.6/asyncio/events.py", line 127, in _run
+    self._callback(*self._args)
+  File "/Users/Raiden/anaconda/envs/bbytes/lib/python3.6/site-packages/discord/client.py", line 307, in _run_event
+    yield from getattr(self, event)(*args, **kwargs)
+  File "infosphere.py", line 151, in on_message
+    await bot.process_commands(msg)
+  File "/Users/Raiden/anaconda/envs/bbytes/lib/python3.6/site-packages/discord/ext/commands/bot.py", line 846, in process_commands
+    yield from command.invoke(ctx)
+  File "/Users/Raiden/anaconda/envs/bbytes/lib/python3.6/site-packages/discord/ext/commands/core.py", line 374, in invoke
+    yield from injected(*ctx.args, **ctx.kwargs)
+  File "/Users/Raiden/anaconda/envs/bbytes/lib/python3.6/site-packages/discord/ext/commands/core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "/Users/Raiden/Documents/apps/personal/infosphere/plugins/reddit.py", line 50, in aww
+    @c.command(name='aww')
+  File "/Users/Raiden/Documents/apps/personal/infosphere/plugins/reddit.py", line 31, in get_reddit
+    while True:
+KeyboardInterrupt
+PyNaCl is not installed, voice will NOT be supported
+on_ready has successfully been registered as an event
+on_message has successfully been registered as an event
+on_message_edit has successfully been registered as an event
+on_command has successfully been registered as an event
+on_command_error has successfully been registered as an event
+on_server_join has successfully been registered as an event
+on_server_remove has successfully been registered as an event
+logging in using static token
+Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+sent the identify payload to create the websocket
+Failed to load plugin misc:
+    ModuleNotFoundError: No module named 'bfkac'
+Failed to load plugin urban:
+    ModuleNotFoundError: No module named 'bfkac'
+------------------------STATUS------------------------
+2017-09-14 13:37:45.057222
+Infosphere v0.0.1
+Logged in as infosphere-bot#5530 (357582570126442496)
+Plugins: fli, google, reddit
+------------------------STATUS------------------------
+[infosphere-test - #general] <Orevarc#8153>: !aww
+[COMMAND] `!aww` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTPS connection (1): www.reddit.com
+[infosphere-test - #general] <infosphere-bot#5530>: I found a picture of him bleping. Important. https://i.redd.it/v8d4kwkeorlz.jpg
+[infosphere-test - #general] <Orevarc#8153>: !eww
+[COMMAND] `!eww` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTPS connection (1): www.reddit.com
+[infosphere-test - #general] <infosphere-bot#5530>: What kind of Mantis??? Looks injured https://i.redd.it/r4dx039bcvlz.jpg
+[infosphere-test - #general] <Orevarc#8153>: !aww
+[COMMAND] `!aww` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTPS connection (1): www.reddit.com
+[infosphere-test - #general] <infosphere-bot#5530>: Yoga Ball Exercise are FUN! https://i.imgur.com/b3CIJgF.gifv
+We have stopped responding to the gateway.
+Websocket closed with None (), attempting a reconnect.
+Got ResumeWebSocket
+PyNaCl is not installed, voice will NOT be supported
+on_ready has successfully been registered as an event
+on_message has successfully been registered as an event
+on_message_edit has successfully been registered as an event
+on_command has successfully been registered as an event
+on_command_error has successfully been registered as an event
+on_server_join has successfully been registered as an event
+on_server_remove has successfully been registered as an event
+logging in using static token
+Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+sent the identify payload to create the websocket
+Failed to load plugin misc:
+    ModuleNotFoundError: No module named 'bfkac'
+Failed to load plugin urban:
+    ModuleNotFoundError: No module named 'bfkac'
+------------------------STATUS------------------------
+2017-09-14 13:48:23.814690
+Infosphere v0.0.1
+Logged in as infosphere-bot#5530 (357582570126442496)
+Plugins: fli, google, reddit
+------------------------STATUS------------------------
+[infosphere-test - #general] <Orevarc#8153>: !woah
+[COMMAND] `!woah` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTPS connection (1): www.reddit.com
+[infosphere-test - #general] <infosphere-bot#5530>: Y'all liked my other Mardi Gras Indian so much I did another [OC] https://v.redd.it/te2je5sh6vlz
+[infosphere-test - #general] <Orevarc#8153>: !its🔥
+PyNaCl is not installed, voice will NOT be supported
+on_ready has successfully been registered as an event
+on_message has successfully been registered as an event
+on_message_edit has successfully been registered as an event
+on_command has successfully been registered as an event
+on_command_error has successfully been registered as an event
+on_server_join has successfully been registered as an event
+on_server_remove has successfully been registered as an event
+logging in using static token
+Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+sent the identify payload to create the websocket
+Failed to load plugin misc:
+    ModuleNotFoundError: No module named 'bfkac'
+Failed to load plugin urban:
+    ModuleNotFoundError: No module named 'bfkac'
+------------------------STATUS------------------------
+2017-09-14 13:49:20.420192
+Infosphere v0.0.1
+Logged in as infosphere-bot#5530 (357582570126442496)
+Plugins: fli, google, reddit
+------------------------STATUS------------------------
+[infosphere-test - #general] <Orevarc#8153>: !its🔥
+[COMMAND] `!its🔥` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTPS connection (1): www.reddit.com
+[infosphere-test - #general] <infosphere-bot#5530>: Leopards playing tug of war with a rock python 🔥🔥🔥 https://i.redd.it/8z2l1e3fntlz.jpg
+[infosphere-test - #general] <Orevarc#8153>: !loop water
+[COMMAND] `!loop water` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTPS connection (1): www.reddit.com
+[infosphere-test - #general] <infosphere-bot#5530>: Majestic multi-tasking [L] http://i.imgur.com/yBS2UA5.gifv
+PyNaCl is not installed, voice will NOT be supported
+on_ready has successfully been registered as an event
+on_message has successfully been registered as an event
+on_message_edit has successfully been registered as an event
+on_command has successfully been registered as an event
+on_command_error has successfully been registered as an event
+on_server_join has successfully been registered as an event
+on_server_remove has successfully been registered as an event
+logging in using static token
+Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+sent the identify payload to create the websocket
+Failed to load plugin misc:
+    ModuleNotFoundError: No module named 'bfkac'
+Failed to load plugin urban:
+    ModuleNotFoundError: No module named 'bfkac'
+------------------------STATUS------------------------
+2017-09-14 13:51:09.877723
+Infosphere v0.0.1
+Logged in as infosphere-bot#5530 (357582570126442496)
+Plugins: fli, google, reddit
+------------------------STATUS------------------------
+[infosphere-test - #general] <Orevarc#8153>: !pubg
+[COMMAND] `!pubg` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTPS connection (1): www.reddit.com
+[infosphere-test - #general] <infosphere-bot#5530>: Level 4 Helmet... https://i.redd.it/4fulz4yk7ulz.jpg
+[infosphere-test - #general] <Orevarc#8153>: !pubg
+[COMMAND] `!pubg` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTPS connection (1): www.reddit.com
+[infosphere-test - #general] <infosphere-bot#5530>: two loot goblins have an intense race https://clips.twitch.tv/AgileSeductiveCarabeefSMOrc
+[infosphere-test - #general] <Orevarc#8153>: !pbg
+[infosphere-test - #general] <Orevarc#8153>: !pubg
+[COMMAND] `!pubg` by `Orevarc#8153` in `[infosphere-test] - #general`
+Starting new HTTPS connection (1): www.reddit.com
+[infosphere-test - #general] <infosphere-bot#5530>: When you finally have to give up your dreams https://imgur.com/a/SvTOB

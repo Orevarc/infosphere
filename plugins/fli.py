@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
+import asyncio
 
-from bfkac.decorators import command
+from infosphere.decorators import command
+
+from discord.ext import commands as c
 
 outputs = []
 
@@ -69,52 +72,45 @@ for a, b in character_pairs:
     FLIP_TABLE[b] = a
 
 
-def flip_message(msg):
-    flipped = []
-    for c in msg:
-        flipped.append(FLIP_TABLE.get(c, c))
-    flipped.reverse()
-    flipped = u''.join(flipped)
-    return flipped
+class Fli:
+    def __init__(self, bot):
+        self.bot = bot
+
+    def flip_message(self, msg):
+        flipped = []
+        for c in msg:
+            flipped.append(FLIP_TABLE.get(c, c))
+        flipped.reverse()
+        flipped = u''.join(flipped)
+        return flipped
+
+    @c.command(name='flip')
+    async def flip(self, *, string: str):
+        msg = self.flip_message(string)
+        if not msg:
+            msg = u'┻━┻'
+        fmt = u'{guy} {msg}'
+        guy = u'(╯°□°）╯︵'
+        await self.bot.say(fmt.format(msg=msg, guy=guy))
+
+    @c.command(name='rageflip')
+    async def rageflip(self, *, string: str):
+        msg = self.flip_message(string)
+        if not msg:
+            msg = u'┻━┻'
+        fmt = u'{guy} {msg}'
+        guy = u'(ノಠ益ಠ)ノ彡'
+        await self.bot.say(fmt.format(msg=msg, guy=guy))
+
+    @c.command(name='unflip')
+    async def unflip(self, *, string: str):
+        msg = self. flip_message(string)
+        if not msg:
+            msg = u'┬─┬'
+        fmt = u'{msg} {guy}'
+        guy = u'ノ( º _ ºノ)'
+        await self.bot.say(fmt.format(msg=msg, guy=guy))
 
 
-@command('flip')
-def flip(cmd, rest, data, plugin):
-    '''
-        !flip <thing>
-        Flip a thing.
-    '''
-    msg = flip_message(rest)
-    if not msg:
-        msg = u'┻━┻'
-    fmt = u'{guy} {msg}'
-    guy = u'(╯°□°）╯︵'
-    outputs.append([data['channel'], fmt.format(msg=msg, guy=guy)])
-
-
-@command('rageflip')
-def rageflip(cmd, rest, data, plugin):
-    '''
-        !rageflip <thing>
-        Angrily flip a thing.
-    '''
-    msg = flip_message(rest)
-    if not msg:
-        msg = u'┻━┻'
-    fmt = u'{guy} {msg}'
-    guy = u'(ノಠ益ಠ)ノ彡'
-    outputs.append([data['channel'], fmt.format(msg=msg, guy=guy)])
-
-
-@command('unflip')
-def unflip(cmd, rest, data, plugin):
-    '''
-        !unflip <thing>
-        Unflip a thing.
-    '''
-    msg = flip_message(rest)
-    if not msg:
-        msg = u'┬─┬'
-    fmt = u'{msg} {guy}'
-    guy = u'ノ( º _ ºノ)'
-    outputs.append([data['channel'], fmt.format(msg=msg, guy=guy)])
+def setup(bot):
+    bot.add_cog(Fli(bot))
