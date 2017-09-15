@@ -26,7 +26,7 @@ class Google:
             'key': 'AIzaSyCzjmdz6z-fPzLHcEItOXTftk6Cege7ez0',
             'fields': 'items(link)',
             'searchType': 'image',
-            'safe': 'high',
+            'safe': 'off',
         }
         if animated:
             params.update({

@@ -79,6 +79,11 @@ class Reddit:
         '''!pubg --> Returns some PUBG stuff'''
         await self.get_reddit('pubattlegrounds')
 
+    @c.command(name='dank')
+    async def dank(self):
+        '''!dank --> 🅱️ank'''
+        await self.get_reddit('dankmemes')
+
 
 def setup(bot):
     bot.add_cog(Reddit(bot))
