@@ -10,11 +10,19 @@ from discord.ext import commands as c
 from infosphere.helpers import is_owner, get_logger
 
 
+def get_env_variable(var_name):
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        error_msg = "Set the %s environment variable" % var_name
+        raise ImproperlyConfigured(error_msg)
+
+
 # Set up config variables
 with open("config/config.json") as cfg:
     config = json.load(cfg)
 
-token        = config["token"]
+token        = get_env_variable('DISCORD_TOKEN')
 version = config['version']
 description = config['description']
 bot_name     = config["bot_name"]
