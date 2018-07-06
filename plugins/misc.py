@@ -31,6 +31,12 @@ class Misc:
         else:
             await self.bot.say('Unable to get a catfact :pouting_cat:')
 
+    @c.command(name='cthulu')
+    async def cthulu(self, *):
+        '''!praise cthulu <string> --> ^(;,;)^ '''
+        cthulu = u'^(;,;)^'
+        await self.bot.say(cthulu)
+
     @c.command(name='dog', aliases=['doggo'])
     async def dog(self, *, breed: str):
         '''!dog[doggo] <breed> --> Get a 🐶 <breed> = list; 
