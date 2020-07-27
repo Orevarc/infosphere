@@ -67,7 +67,6 @@ async def update_profile(name, picture):
         await bot.edit_profile(username=name)
         log.info("Bot name set.")
 
-# Events
 @bot.event
 async def on_ready():
     date = datetime.now()
