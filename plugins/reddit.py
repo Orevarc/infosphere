@@ -8,7 +8,7 @@ REDDIT_URL = 'https://www.reddit.com/r/{}.json'
 REDDIT_URL_TOP = 'https://www.reddit.com/r/{}/top.json?sort=top&t=week'
 
 
-class Reddit:
+class Reddit(c.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -86,7 +86,7 @@ class Reddit:
 
 
 def setup(bot):
-    bot.load_extension(Reddit(bot))
+    bot.load_extension("Reddit")
 
 # @command('bro')
 # def animalsbeingbros(cmd, rest, data, plugin):
