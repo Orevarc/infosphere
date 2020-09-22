@@ -25,6 +25,8 @@ class Reddit(c.Cog):
         response = self.bot.loop.run_in_executor(None, func)
         while True:
             await asyncio.sleep(0.25)
+            log.info("wait")
+            log.info(f"{response}")
             if response.done():
                 response = response.result().json()
                 log.info("DONE")
