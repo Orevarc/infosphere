@@ -88,12 +88,13 @@ async def on_ready():
     log.info("------------------------STATUS------------------------")
 
 @bot.event
-async def on_message(msg):
+async def on_message(self, msg):
     # Log it
     if log_messages:
         log.info(f"[{msg.guild} - #{msg.channel}] <{msg.author}>: {msg.content}")
     # Handle the commands
-    await bot.process_commands(msg)
+    ctx = await self.get_context(message, cls=MyContext)
+    await self.invoke(ctx)
 
 @bot.event
 async def on_message_edit(old, new):
