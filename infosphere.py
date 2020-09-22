@@ -101,7 +101,7 @@ async def on_message_edit(old, new):
         await bot.process_commands(new)
 
 @bot.event
-async def on_command(cmd, ctx):
+async def on_command(ctx):
     if log_commands:
         command = f"{ctx.message.content}"
         user = f"{ctx.message.author}"
@@ -109,7 +109,7 @@ async def on_command(cmd, ctx):
         log.info(f'[COMMAND] `{command}` by `{user}` in `{location}`')
 
 @bot.event
-async def on_command_error(err, ctx):
+async def on_command_error(ctx, err):
     channel = ctx.message.channel
     if isinstance(err, c.NoPrivateMessage):
         await bot.send_message(channel,
