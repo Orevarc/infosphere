@@ -8,7 +8,7 @@ REDDIT_URL = 'https://www.reddit.com/r/{}.json'
 REDDIT_URL_TOP = 'https://www.reddit.com/r/{}/top.json?sort=top&t=week'
 
 
-class Reddit(c.Cog):
+class Reddit:
     def __init__(self, bot):
         self.bot = bot
 
