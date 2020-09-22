@@ -22,12 +22,13 @@ class Reddit(c.Cog):
             else:
                 return requests.get(
                     REDDIT_URL.format(subreddit), headers=headers)
-        loop = asyncio.get_event_loop()
-        response = asyncio.loop.run_in_executor(None, func)
+        response = self.bot.loop.run_in_executor(None, func)
         while True:
             await asyncio.sleep(0.25)
             if response.done():
                 response = response.result().json()
+                log.info("DONE")
+                log.info(f"{response}")
                 break
         posts = []
         for p in response['data']['children']:
