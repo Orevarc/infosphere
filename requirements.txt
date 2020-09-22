@@ -16,7 +16,7 @@ pycrypto==2.6.1
 pyOpenSSL>=0.15.1
 python-daemon==2.1.1
 python-dateutil==2.5.2
-requests>=2.9.1
+requests==2.9.1
 six==1.10.0
 websocket-client==0.35.0
 websockets==3.4
