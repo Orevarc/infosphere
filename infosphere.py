@@ -91,7 +91,7 @@ async def on_ready():
 async def on_message(msg):
     # Log it
     if log_messages:
-        log.info(f"[{msg.server} - #{msg.channel}] <{msg.author}>: {msg.content}")
+        log.info(f"[{msg.guild} - #{msg.channel}] <{msg.author}>: {msg.content}")
     # Handle the commands
     await bot.process_commands(msg)
 
@@ -105,7 +105,7 @@ async def on_command(cmd, ctx):
     if log_commands:
         command = f"{ctx.message.content}"
         user = f"{ctx.message.author}"
-        location = f"[{ctx.message.server}] - #{ctx.message.channel}"
+        location = f"[{ctx.message.guild}] - #{ctx.message.channel}"
         log.info(f'[COMMAND] `{command}` by `{user}` in `{location}`')
 
 @bot.event
