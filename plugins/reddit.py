@@ -22,7 +22,8 @@ class Reddit(c.Cog):
             else:
                 return requests.get(
                     REDDIT_URL.format(subreddit), headers=headers)
-        response = self.bot.loop.run_in_executor(None, func)
+        loop = asyncio.get_event_loop()
+        response = asyncio.loop.run_in_executor(None, func)
         while True:
             await asyncio.sleep(0.25)
             if response.done():
