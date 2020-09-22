@@ -1,5 +1,5 @@
 aiohttp==1.0.5
-async-timeout==1.4.0
+async-timeout>=1.4.0
 cffi==1.5.2
 discord.py==1.4.0
 docutils==0.12
