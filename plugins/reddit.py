@@ -12,7 +12,7 @@ class Reddit:
     def __init__(self, bot):
         self.bot = bot
 
-    async def get_reddit(self, subreddit, top=False):
+    async def get_reddit(self, subreddit, ctx, top=False):
         headers = {'user-agent': 'infosphere'}
 
         def func():
@@ -34,55 +34,55 @@ class Reddit:
                 posts.append(p['data'])
 
         if len(posts) == 0:
-            await self.bot.say("Couldn't find anything...")
+            await self.ctx.send("Couldn't find anything...")
         else:
             post = random.choice(posts)
-            await self.bot.say('{} {}'.format(post['title'], post['url']))
+            await self.ctx.send('{} {}'.format(post['title'], post['url']))
 
     @c.command(name='aww')
-    async def aww(self):
+    async def aww(self, ctx):
         '''!aww --> Returns a random cute image '''
-        await self.get_reddit('aww')
+        await self.get_reddit('aww', ctx)
 
     @c.command(name='eww')
-    async def eww(self):
+    async def eww(self, ctx):
         '''!eww --> Returns a :bug:'''
-        await self.get_reddit('whatsthisbug')
+        await self.get_reddit('whatsthisbug', ctx)
 
     @c.command(name='loop', aliases=['perfectloop'])
-    async def loop(self):
+    async def loop(self, ctx):
         '''!loop[perfectloop] --> Returns nice loop'''
-        await self.get_reddit('perfectloops')
+        await self.get_reddit('perfectloops', ctx)
 
     @c.command(name='woah', aliases=['whoa'])
-    async def woah(self):
+    async def woah(self, ctx):
         '''!woah[whoa] --> Returns some cool stuff'''
-        await self.get_reddit('woahdude')
+        await self.get_reddit('woahdude', ctx)
 
     @c.command(name='soda')
-    async def soda(self):
+    async def soda(self, ctx):
         '''!soda --> Returns an infomercial taken out of context'''
-        await self.get_reddit('wheredidthesodago')
+        await self.get_reddit('wheredidthesodago', ctx)
 
     @c.command(name='neat')
-    async def neat(self):
+    async def neat(self, ctx):
         '''!neat --> Returns some neat stuff'''
-        await self.get_reddit('interestingasfuck')
+        await self.get_reddit('interestingasfuck', ctx)
 
     @c.command(name='its🔥')
-    async def itslit(self):
+    async def itslit(self, ctx):
         '''!its:fire: --> Returns some lit nature'''
-        await self.get_reddit('natureisfuckinglit')
+        await self.get_reddit('natureisfuckinglit', ctx)
 
     @c.command(name='pubg')
-    async def pubg(self):
+    async def pubg(self, ctx):
         '''!pubg --> Returns some PUBG stuff'''
-        await self.get_reddit('pubattlegrounds')
+        await self.get_reddit('pubattlegrounds', ctx)
 
     @c.command(name='dank')
-    async def dank(self):
+    async def dank(self, ctx):
         '''!dank --> 🅱️ank'''
-        await self.get_reddit('dankmemes')
+        await self.get_reddit('dankmemes', ctx)
 
 
 def setup(bot):
