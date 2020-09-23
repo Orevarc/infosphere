@@ -15,6 +15,8 @@ reddit = praw.Reddit(
     client_id='YG1Ci57pB7pE1A',
     client_secret=os.environ['REDDIT_TOKEN']
 )
+with open("config/config.json") as cfg:
+    config = json.load(cfg)
 
 log_file = config["log_file"]
 log = get_logger(log_file)
