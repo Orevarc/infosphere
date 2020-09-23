@@ -41,15 +41,17 @@ class Reddit(c.Cog):
         # for p in response['data']['children']:
         #     if not (p['data']['is_self'] or p['data']['stickied']):
         #         posts.append(p['data'])
+        log_info(len(submissions))
         for s in submissions:
             if not (s.selftext or s.stickied):
                 posts.append(s)
 
         if len(posts) == 0:
+            log_info("nothing")
             await self.ctx.send("Couldn't find anything...")
         else:
             post = random.choice(posts)
-            await self.ctx.send('{} {}'.format(s.title, s.url))
+            await self.ctx.send('{} {}'.format(post.title, post.url))
 
     @c.command(name='aww')
     async def aww(self, ctx):
