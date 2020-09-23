@@ -1,4 +1,5 @@
 import asyncio
+import os
 import praw
 import random
 import requests
@@ -10,7 +11,8 @@ REDDIT_URL_TOP = 'https://www.reddit.com/r/{}/top.json?sort=top&t=week'
 
 reddit = praw.Reddit(
     user_agent="user-agent': 'web:infosphere:v1.0 (by (u/CrazyCrav)",
-    client_id='YG1Ci57pB7pE1A'
+    client_id='YG1Ci57pB7pE1A',
+    client_secret=os.environ['REDDIT_TOKEN']
 )
 
 
