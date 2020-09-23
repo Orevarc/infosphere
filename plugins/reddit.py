@@ -5,6 +5,7 @@ import random
 import requests
 
 from discord.ext import commands as c
+from infosphere.helpers import is_owner, get_logger
 
 REDDIT_URL = 'https://www.reddit.com/r/{}.json'
 REDDIT_URL_TOP = 'https://www.reddit.com/r/{}/top.json?sort=top&t=week'
@@ -14,6 +15,9 @@ reddit = praw.Reddit(
     client_id='YG1Ci57pB7pE1A',
     client_secret=os.environ['REDDIT_TOKEN']
 )
+
+log_file = config["log_file"]
+log = get_logger(log_file)
 
 
 class Reddit(c.Cog):
