@@ -9,7 +9,8 @@ REDDIT_URL = 'https://www.reddit.com/r/{}.json'
 REDDIT_URL_TOP = 'https://www.reddit.com/r/{}/top.json?sort=top&t=week'
 
 reddit = praw.Reddit(
-    user_agent="user-agent': 'web:infosphere:v1.0 (by (u/CrazyCrav)"
+    user_agent="user-agent': 'web:infosphere:v1.0 (by (u/CrazyCrav)",
+    client_id='YG1Ci57pB7pE1A'
 )
 
 
