@@ -13,7 +13,7 @@ class Reddit(c.Cog):
         self.bot = bot
 
     async def get_reddit(self, subreddit, ctx, top=False):
-        headers = {'user-agent': 'infosphere'}
+        headers = {'user-agent': 'web:infosphere:v1.0'}
 
         def func():
             if top:
