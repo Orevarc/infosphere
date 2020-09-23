@@ -1,4 +1,5 @@
 import asyncio
+import praw
 import random
 import requests
 
@@ -7,40 +8,48 @@ from discord.ext import commands as c
 REDDIT_URL = 'https://www.reddit.com/r/{}.json'
 REDDIT_URL_TOP = 'https://www.reddit.com/r/{}/top.json?sort=top&t=week'
 
+reddit = praw.Reddit(
+    user_agent="user-agent': 'web:infosphere:v1.0 (by (u/CrazyCrav)"
+)
+
 
 class Reddit(c.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     async def get_reddit(self, subreddit, ctx, top=False):
-        headers = {'user-agent': 'web:infosphere:v1.0'}
+        # headers = {'user-agent': 'web:infosphere:v1.0'}
+        submissions = reddit.subreddit(subreddit).hot(limit=25)
 
-        def func():
-            if top:
-                return requests.get(
-                    REDDIT_URL_TOP.format(subreddit), headers=headers, timeout=5)
-            else:
-                return requests.get(
-                    REDDIT_URL.format(subreddit), headers=headers, timeout=5)
-        response = self.bot.loop.run_in_executor(None, func)
-        log.info(f"{response}")
-        while True:
-            await asyncio.sleep(0.25)
-            if response.done():
-                response = response.result().json()
-                log.info("DONE")
-                log.info(f"{response}")
-                break
+        # def func():
+        #     if top:
+        #         return requests.get(
+        #             REDDIT_URL_TOP.format(subreddit), headers=headers, timeout=5)
+        #     else:
+        #         return requests.get(
+        #             REDDIT_URL.format(subreddit), headers=headers, timeout=5)
+        # response = self.bot.loop.run_in_executor(None, func)
+        # log.info(f"{response}")
+        # while True:
+        #     await asyncio.sleep(0.25)
+        #     if response.done():
+        #         response = response.result().json()
+        #         log.info("DONE")
+        #         log.info(f"{response}")
+        #         break
         posts = []
-        for p in response['data']['children']:
-            if not (p['data']['is_self'] or p['data']['stickied']):
-                posts.append(p['data'])
+        # for p in response['data']['children']:
+        #     if not (p['data']['is_self'] or p['data']['stickied']):
+        #         posts.append(p['data'])
+        for s in submissions:
+            if not (s.selftext or s.stickied:
+                posts.append(s)
 
         if len(posts) == 0:
             await self.ctx.send("Couldn't find anything...")
         else:
             post = random.choice(posts)
-            await self.ctx.send('{} {}'.format(post['title'], post['url']))
+            await self.ctx.send('{} {}'.format(s.title, s.url))
 
     @c.command(name='aww')
     async def aww(self, ctx):
@@ -122,4 +131,3 @@ def setup(bot):
 #     else:
 #         link = getReddit('animalsbeingbros')
 #     outputs.append([data['channel'], link])
-
