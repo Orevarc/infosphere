@@ -18,10 +18,10 @@ class Reddit(c.Cog):
         def func():
             if top:
                 return requests.get(
-                    REDDIT_URL_TOP.format(subreddit), headers=headers)
+                    REDDIT_URL_TOP.format(subreddit), headers=headers, timeout=5)
             else:
                 return requests.get(
-                    REDDIT_URL.format(subreddit), headers=headers)
+                    REDDIT_URL.format(subreddit), headers=headers, timeout=5)
         response = self.bot.loop.run_in_executor(None, func)
         log.info(f"{response}")
         while True:
