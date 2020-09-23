@@ -42,7 +42,7 @@ class Reddit(c.Cog):
         #     if not (p['data']['is_self'] or p['data']['stickied']):
         #         posts.append(p['data'])
         for s in submissions:
-            if not (s.selftext or s.stickied:
+            if not (s.selftext or s.stickied):
                 posts.append(s)
 
         if len(posts) == 0:
