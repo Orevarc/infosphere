@@ -8,7 +8,7 @@ from discord.ext import commands as c
 GOOGLE_URL = 'https://www.googleapis.com/customsearch/v1'
 
 
-class Google:
+class Google(c.Cog):
     """
         Search the web!
     """
@@ -44,6 +44,7 @@ class Google:
                 break
         images = response['items']
         image = random.choice(images)
+        await self.ctx.send(image.get("link", None))
         await self.bot.say(image.get("link", None))
 
     @c.command(name="animate")
