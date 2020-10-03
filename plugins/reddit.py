@@ -51,13 +51,13 @@ class Reddit(c.Cog):
         # for p in response['data']['children']:
         #     if not (p['data']['is_self'] or p['data']['stickied']):
         #         posts.append(p['data'])
-        log_info(len(submissions))
+        log.info(len(submissions))
         for s in submissions:
             if not (s.selftext or s.stickied):
                 posts.append(s)
 
         if len(posts) == 0:
-            log_info("nothing")
+            log.info("nothing")
             await self.ctx.send("Couldn't find anything...")
         else:
             post = random.choice(posts)
