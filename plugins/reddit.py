@@ -28,6 +28,7 @@ class Reddit(c.Cog):
         self.bot = bot
 
     async def get_reddit(self, subreddit, ctx, top=False):
+        log.info("REDDIT")
         # headers = {'user-agent': 'web:infosphere:v1.0'}
         submissions = reddit.subreddit(subreddit).hot(limit=25)
 
