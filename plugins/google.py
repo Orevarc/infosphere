@@ -44,7 +44,7 @@ class Google(c.Cog):
                 break
         images = response['items']
         image = random.choice(images)
-        await self.ctx.send(image.get("link", None))
+#         await self.ctx.send(image.get("link", None))
         await self.bot.say(image.get("link", None))
 
     @c.command(name="animate")
