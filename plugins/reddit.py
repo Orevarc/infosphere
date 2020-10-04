@@ -66,7 +66,7 @@ class Reddit(c.Cog):
         await self.get_reddit('interestingasfuck', ctx)
 
     @c.command(name='stunt')
-    async def neat(self, ctx):
+    async def stunt(self, ctx):
         '''!neat --> Returns some stunts'''
         await self.get_reddit('holdmyredbull', ctx)
 
