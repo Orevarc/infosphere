@@ -6,7 +6,6 @@ import random
 import requests
 
 from discord.ext import commands as c
-from infosphere.helpers import is_owner, get_logger
 
 REDDIT_URL = 'https://www.reddit.com/r/{}.json'
 REDDIT_URL_TOP = 'https://www.reddit.com/r/{}/top.json?sort=top&t=week'
@@ -16,53 +15,25 @@ reddit = praw.Reddit(
     client_id='YG1Ci57pB7pE1A',
     client_secret=os.environ['REDDIT_TOKEN']
 )
-with open("config/config.json") as cfg:
-    config = json.load(cfg)
-
-log_file = config["log_file"]
-log = get_logger(log_file)
-
 
 class Reddit(c.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     async def get_reddit(self, subreddit, ctx, top=False):
-        log.info("REDDIT")
-        # headers = {'user-agent': 'web:infosphere:v1.0'}
         submissions = reddit.subreddit(subreddit).hot(limit=25)
 
-        # def func():
-        #     if top:
-        #         return requests.get(
-        #             REDDIT_URL_TOP.format(subreddit), headers=headers, timeout=5)
-        #     else:
-        #         return requests.get(
-        #             REDDIT_URL.format(subreddit), headers=headers, timeout=5)
-        # response = self.bot.loop.run_in_executor(None, func)
-        # log.info(f"{response}")
-        # while True:
-        #     await asyncio.sleep(0.25)
-        #     if response.done():
-        #         response = response.result().json()
-        #         log.info("DONE")
-        #         log.info(f"{response}")
-        #         break
         posts = []
-        # for p in response['data']['children']:
-        #     if not (p['data']['is_self'] or p['data']['stickied']):
-        #         posts.append(p['data'])
-        log.info(len(submissions))
+
         for s in submissions:
             if not (s.selftext or s.stickied):
                 posts.append(s)
 
         if len(posts) == 0:
-            log.info("nothing")
             await self.ctx.send("Couldn't find anything...")
         else:
             post = random.choice(posts)
-            await self.ctx.send('{} {}'.format(post.title, post.url))
+            await ctx.send('{} {}'.format(post.title, post.url))
 
     @c.command(name='aww')
     async def aww(self, ctx):
@@ -93,6 +64,11 @@ class Reddit(c.Cog):
     async def neat(self, ctx):
         '''!neat --> Returns some neat stuff'''
         await self.get_reddit('interestingasfuck', ctx)
+
+    @c.command(name='stunt')
+    async def neat(self, ctx):
+        '''!neat --> Returns some stunts'''
+        await self.get_reddit('holdmyredbull', ctx)
 
     @c.command(name='its🔥')
     async def itslit(self, ctx):
