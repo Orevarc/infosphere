@@ -9,7 +9,7 @@ inflect==0.2.5
 ipaddress==1.0.16
 lockfile==0.12.2
 ndg-httpsclient==0.4.0
-paramiko==1.16.0
+paramiko==2.10.1
 praw==7.1.0
 pyasn1==0.4.8
 pycparser==2.14
